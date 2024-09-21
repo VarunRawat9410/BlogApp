@@ -2,6 +2,10 @@ const express = require('express')
 const http = require('http')
 const app = express()
 
+const cors = require('cors')
+app.use(cors())
+
+
 const userRoutes = require('./routes/userRoutes')
 
 app.use('/users', userRoutes)

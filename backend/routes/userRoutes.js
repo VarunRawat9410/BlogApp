@@ -1,16 +1,12 @@
 const express = require('express')
-const axios = require('axios');
-const router = express.Router();
+const router = express.Router()
+const { getUsers, createUser, getUserByEmail } = require('../controllers/userController')
 
 
-router.get('/',async (req,res)=>{
-    try {
-        const response = await axios.get('https://dummyjson.com/users');
-        res.json(response.data);
-    } catch (error) {
-        console.error('Error making API call:', error);
-        res.status(500).send('Error fetching data');
-    }
-})
+router.get('/',getUsers)
+router.post('/',createUser)
+router.get('/:email', getUserByEmail)
 
 module.exports = router;
+
+
